@@ -110,9 +110,8 @@ async function getWeatherData(URL) {
 async function dataprocess(city) {
     const key = config.weatherKey;
     let url = `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&key=${key}`;
-    console.log(city);
     let weatherData = await getWeatherData(url);
-    console.log(weatherData);
+
     for(let i=0; i<5; i++)
     {
     let currentElement = document.getElementById(`${i}`);
@@ -125,6 +124,7 @@ async function dataprocess(city) {
     let img = document.createElement("img");
     let h1 = document.createElement("h1");
     let h2 = document.createElement("h2");
+    h2.classList = "date";
     let h3 = document.createElement("h3");
     let h4 = document.createElement("h4");
 
@@ -200,9 +200,9 @@ async function dataprocess(city) {
             h3.innerHTML = weatherData.data[i].app_max_temp + "°";
             h4.innerHTML = weatherData.data[i].app_min_temp + "°";
 
+            currentElement.appendChild(h2);
             currentElement.appendChild(img);
             currentElement.appendChild(h1);
-            currentElement.appendChild(h2);
             currentElement.appendChild(h3);
             currentElement.appendChild(h4);
 
